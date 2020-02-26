@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  line-height: 1.5;
+  color: #333; }
+
+ul {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto; }
+
+i {
+  color: #eacad0; }
+
+a i:hover {
+  color: #333; }
+
+.current::before {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  width: 97%;
+  border: 1.5px solid #eacad0; }
+
+hr {
+  width: 100%;
+  border-top: 1px solid #f9eff1; }
+
+.btn {
+  font-size: 1rem;
+  border: none;
+  background: red;
+  padding: 1rem 2rem;
+  border-radius: 15px; }
+
+body {
+  font-size: 2rem; }
+
+.header {
+  height: 100px;
+  background: #fcf8f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .header-top {
+    height: 30%;
+    font-size: 0.9rem;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+    .header-top .icons a i,
+    .header-top .adress i,
+    .header-top .lang i {
+      padding: 0 0.5rem; }
+  .header-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 60%;
+    position: relative; }
+    .header-nav .nav-list {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      height: 70px;
+      cursor: pointer; }
+      .header-nav .nav-list li:hover {
+        background: #f9eff1; }
+      .header-nav .nav-list-item {
+        position: relative;
+        font-size: 1.5rem;
+        padding: 1rem 1rem; }
+        .header-nav .nav-list-item .drop-menu {
+          display: none;
+          position: absolute;
+          top: 68px;
+          left: 0px;
+          font-size: 1.5rem;
+          width: 250px;
+          background: #fcf8f9; }
+          .header-nav .nav-list-item .drop-menu li {
+            padding-left: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 60px; }
+
+.front {
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; }
+  .front .btn-appointment {
+    font-size: 1.2rem;
+    background: #eacad0; }
+  .front .btn-appointment:hover {
+    background: #f9eff1; }

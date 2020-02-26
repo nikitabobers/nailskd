@@ -1,0 +1,82 @@
+@import "variables";
+@import "config";
+
+body {
+  font-size: 2rem;
+}
+.header {
+  height: 100px;
+  background: $color-light;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+
+  &-top {
+    height: 30%;
+    font-size: 0.9rem;
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .icons a i,
+    .adress i,
+    .lang i {
+      padding: 0 0.5rem;
+    }
+  }
+  &-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+    width: 60%;
+    position: relative;
+    .nav-list {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      height: 70px;
+      cursor: pointer;
+      li:hover {
+        background: $color-mid;
+      }
+      &-item {
+        position: relative;
+        font-size: 1.5rem;
+        padding: 1rem 1rem;
+
+        .drop-menu {
+          display: none;
+          position: absolute;
+          top: 68px;
+          left: 0px;
+          font-size: 1.5rem;
+          width: 250px;
+          background: $color-light;
+          li {
+            padding-left: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 60px;
+          }
+        }
+      }
+    }
+  }
+}
+.front {
+  height: calc(100vh - 100px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .btn-appointment {
+    font-size: 1.2rem;
+    background: $color-dark;
+  }
+  .btn-appointment:hover {
+    background: $color-mid;
+  }
+}
