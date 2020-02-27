@@ -7,3 +7,9 @@ navHover.addEventListener("mouseover", () => {
 navHover.addEventListener("mouseout", () => {
   dropMenuDisplay.style.display = "none";
 });
+
+const btnReserve = document.querySelector(".btn-appointment");
+
+btnReserve.addEventListener("click", makeAppointment);
+
+function makeAppointment() {}

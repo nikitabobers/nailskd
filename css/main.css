@@ -48,6 +48,7 @@ body {
   font-size: 2rem; }
 
 .header {
+  box-shadow: 0 0 20px #d9d9d9;
   height: 100px;
   background: #fcf8f9;
   display: flex;
@@ -82,8 +83,10 @@ body {
       .header-nav .nav-list-item {
         position: relative;
         font-size: 1.5rem;
-        padding: 1rem 1rem; }
+        padding: 1rem 1rem;
+        margin: 0 3.5rem; }
         .header-nav .nav-list-item .drop-menu {
+          z-index: 2;
           display: none;
           position: absolute;
           top: 68px;
@@ -104,8 +107,69 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center; }
+  .front .slider {
+    z-index: -5;
+    height: 100%;
+    width: 100%;
+    background: url(../img/nail-polish-on-white-background-3609620.jpg) center center/cover; }
+  .front .calendar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .front .calendar-form {
+      position: relative;
+      border-radius: 15px;
+      z-index: 11;
+      height: 600px;
+      width: 500px;
+      background: #fcf8f9;
+      padding: 2rem 4rem; }
+      .front .calendar-form .icon-close {
+        position: absolute;
+        top: 20px;
+        right: 20px; }
+      .front .calendar-form #form {
+        display: flex;
+        flex-direction: column;
+        width: 100%; }
+        .front .calendar-form #form label {
+          font-size: 1.3rem;
+          margin-bottom: 0.2rem; }
+        .front .calendar-form #form input {
+          border: none;
+          border-radius: 5px;
+          padding: 0.3rem 0.3rem;
+          font-size: 1rem;
+          margin-bottom: 1rem; }
+        .front .calendar-form #form .calendar-date {
+          background: red;
+          width: 80%;
+          height: 300px; }
+        .front .calendar-form #form .calendar-time {
+          position: absolute;
+          width: 200px;
+          height: 300px;
+          right: 20px;
+          background: green; }
+  .front .buttons {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
   .front .btn-appointment {
+    position: absolute;
+    bottom: 300px;
     font-size: 1.2rem;
-    background: #eacad0; }
+    background: #333;
+    color: #fff; }
   .front .btn-appointment:hover {
-    background: #f9eff1; }
+    background: #555;
+    transition: background 0.2s ease; }

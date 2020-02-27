@@ -41,6 +41,20 @@
         </nav>
       </header>
       <section class="front">
+        <div class="calendar">
+          <div class="calendar-form">
+            <i class="fas fa-times icon-close"></i>
+            <form id="form">
+              <label for="name">Name</label>
+              <input type="text" placeholder="Name" />
+              <label for="phone">Phone Number</label>
+              <input type="number" placeholder="Phone Number" />
+              <label for="date">Select Date</label>
+              <div class="calendar-date"></div>
+              <div class="calendar-time"></div>
+            </form>
+          </div>
+        </div>
         <div class="slider"></div>
         <div class="buttons container">
           <button class="btn btn-appointment">MAKE AN APPOINTMENT</button>
@@ -52,6 +66,6 @@
       </section>
       <section class="contact"></section>
     </div>
-    <script src="./script.js"></script>
+    <script src="./script/index.js"></script>
   </body>
 </html>
