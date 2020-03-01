@@ -13,3 +13,5 @@ const btnReserve = document.querySelector(".btn-appointment");
 btnReserve.addEventListener("click", makeAppointment);
 
 function makeAppointment() {}
+
+import modal from "./calendar.js";

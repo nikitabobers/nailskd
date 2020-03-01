@@ -40,7 +40,6 @@ hr {
 .btn {
   font-size: 1rem;
   border: none;
-  background: red;
   padding: 1rem 2rem;
   border-radius: 15px; }
 
@@ -127,7 +126,7 @@ body {
       position: relative;
       border-radius: 15px;
       z-index: 11;
-      height: 600px;
+      height: 620px;
       width: 500px;
       background: #fcf8f9;
       padding: 2rem 4rem; }
@@ -148,16 +147,23 @@ body {
           padding: 0.3rem 0.3rem;
           font-size: 1rem;
           margin-bottom: 1rem; }
-        .front .calendar-form #form .calendar-date {
-          background: red;
-          width: 80%;
-          height: 300px; }
-        .front .calendar-form #form .calendar-time {
-          position: absolute;
-          width: 200px;
-          height: 300px;
-          right: 20px;
-          background: green; }
+        .front .calendar-form #form input:focus {
+          box-shadow: 0 0 5px #999; }
+        .front .calendar-form #form .calendar-selector {
+          display: flex; }
+          .front .calendar-form #form .calendar-selector .date {
+            border: 1px solid #333;
+            width: 75%;
+            height: 300px; }
+          .front .calendar-form #form .calendar-selector .time {
+            width: 25%;
+            height: 300px;
+            background: green; }
+        .front .calendar-form #form .btn-submit {
+          width: 70%;
+          margin: 1rem auto;
+          color: #fff;
+          background: #eacad0; }
   .front .buttons {
     width: 100%;
     position: relative;

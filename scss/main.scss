@@ -102,7 +102,7 @@ body {
       }
       border-radius: 15px;
       z-index: 11;
-      height: 600px;
+      height: 620px;
       width: 500px;
       background: $color-light;
       padding: 2rem 4rem;
@@ -113,27 +113,35 @@ body {
         }
         input {
           border: none;
-          // box-shadow: 0 0 5px #999;
           border-radius: 5px;
           padding: 0.3rem 0.3rem;
           font-size: 1rem;
           margin-bottom: 1rem;
         }
+        input:focus {
+          box-shadow: 0 0 5px #999;
+        }
         display: flex;
         flex-direction: column;
         width: 100%;
-
-        .calendar-date {
-          background: red;
-          width: 80%;
-          height: 300px;
+        .calendar-selector {
+          display: flex;
+          .date {
+            border: 1px solid #333;
+            width: 75%;
+            height: 300px;
+          }
+          .time {
+            width: 25%;
+            height: 300px;
+            background: green;
+          }
         }
-        .calendar-time {
-          position: absolute;
-          width: 200px;
-          height: 300px;
-          right: 20px;
-          background: green;
+        .btn-submit {
+          width: 70%;
+          margin: 1rem auto;
+          color: #fff;
+          background: $color-dark;
         }
       }
     }
@@ -154,10 +162,7 @@ body {
     color: #fff;
   }
   .btn-appointment:hover {
-    // box-shadow: 0 0 15px #333;
     background: #555;
-    // color: #000;
-
     transition: background 0.2s ease;
   }
 }
