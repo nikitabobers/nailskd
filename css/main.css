@@ -23,7 +23,7 @@ i {
   color: #eacad0; }
 
 a i:hover {
-  color: #333; }
+  color: #d4939f; }
 
 .current::before {
   content: "";
@@ -42,6 +42,10 @@ hr {
   border: none;
   padding: 1rem 2rem;
   border-radius: 15px; }
+
+input:focus {
+  box-shadow: 0 0 5px #999;
+  outline: none; }
 
 body {
   font-size: 2rem; }
@@ -123,23 +127,29 @@ body {
     justify-content: center;
     align-items: center; }
     .front .calendar-form {
+      z-index: 20;
       position: relative;
       border-radius: 15px;
       z-index: 11;
       height: 620px;
-      width: 500px;
       background: #fcf8f9;
       padding: 2rem 4rem; }
-      .front .calendar-form .icon-close {
+      .front .calendar-form .close {
+        border: none;
+        background: none;
         position: absolute;
         top: 20px;
         right: 20px; }
+        .front .calendar-form .close i:hover {
+          color: #d4939f; }
       .front .calendar-form #form {
+        position: relative;
         display: flex;
         flex-direction: column;
         width: 100%; }
         .front .calendar-form #form label {
-          font-size: 1.3rem;
+          text-align: left;
+          font-size: 1.2rem;
           margin-bottom: 0.2rem; }
         .front .calendar-form #form input {
           border: none;
@@ -147,8 +157,6 @@ body {
           padding: 0.3rem 0.3rem;
           font-size: 1rem;
           margin-bottom: 1rem; }
-        .front .calendar-form #form input:focus {
-          box-shadow: 0 0 5px #999; }
         .front .calendar-form #form .calendar-selector {
           display: flex; }
           .front .calendar-form #form .calendar-selector .date {
@@ -158,12 +166,23 @@ body {
           .front .calendar-form #form .calendar-selector .time {
             width: 25%;
             height: 300px;
-            background: green; }
+            border: 1px solid #333; }
         .front .calendar-form #form .btn-submit {
           width: 70%;
           margin: 1rem auto;
           color: #fff;
           background: #eacad0; }
+        .front .calendar-form #form .btn-submit:hover {
+          color: #fff;
+          background: #d4939f; }
+  .front .calendar,
+  .front .calendar-form {
+    z-index: -10;
+    opacity: 0; }
+  .front .calendar.open,
+  .front .calendar-form.open {
+    opacity: 1;
+    z-index: 10; }
   .front .buttons {
     width: 100%;
     position: relative;

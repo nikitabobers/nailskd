@@ -21,10 +21,10 @@ a {
   margin: 0 auto;
 }
 i {
-  color: $color-dark;
+  color: $color-mid;
 }
 a i:hover {
-  color: $color-black;
+  color: $color-dark;
 }
 .current::before {
   content: "";
@@ -32,15 +32,19 @@ a i:hover {
   bottom: 10px;
   left: 0px;
   width: 97%;
-  border: 1.5px solid $color-dark;
+  border: 1.5px solid $color-mid;
 }
 hr {
   width: 100%;
-  border-top: 1px solid $color-mid;
+  border-top: 1px solid $color-light-mid;
 }
 .btn {
   font-size: 1rem;
   border: none;
   padding: 1rem 2rem;
   border-radius: 15px;
+}
+input:focus {
+  box-shadow: 0 0 5px #999;
+  outline: none;
 }

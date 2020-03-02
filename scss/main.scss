@@ -20,7 +20,7 @@ body {
     justify-content: space-around;
     align-items: center;
     .icons a i,
-    .adress i,
+    .address i,
     .lang i {
       padding: 0 0.5rem;
     }
@@ -39,7 +39,7 @@ body {
       height: 70px;
       cursor: pointer;
       li:hover {
-        background: $color-mid;
+        background: $color-light-mid;
       }
       &-item {
         position: relative;
@@ -79,7 +79,6 @@ body {
     height: 100%;
     width: 100%;
     background: url(../img/nail-polish-on-white-background-3609620.jpg) center center/cover;
-    // background: url(../img/selective-focus-photography-of-assorted-polished-artificial-2624853.jpg) center center/cover;
   }
   .calendar {
     position: absolute;
@@ -94,21 +93,29 @@ body {
     align-items: center;
 
     &-form {
+      z-index: 20;
       position: relative;
-      .icon-close {
+      .close {
+        border: none;
+        background: none;
         position: absolute;
         top: 20px;
         right: 20px;
+        i:hover {
+          color: #d4939f;
+        }
       }
       border-radius: 15px;
       z-index: 11;
       height: 620px;
-      width: 500px;
+      // width: 500px;
       background: $color-light;
       padding: 2rem 4rem;
       #form {
+        position: relative;
         label {
-          font-size: 1.3rem;
+          text-align: left;
+          font-size: 1.2rem;
           margin-bottom: 0.2rem;
         }
         input {
@@ -118,9 +125,7 @@ body {
           font-size: 1rem;
           margin-bottom: 1rem;
         }
-        input:focus {
-          box-shadow: 0 0 5px #999;
-        }
+
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -134,17 +139,31 @@ body {
           .time {
             width: 25%;
             height: 300px;
-            background: green;
+            border: 1px solid #333;
           }
         }
         .btn-submit {
           width: 70%;
           margin: 1rem auto;
           color: #fff;
+          background: $color-mid;
+        }
+        .btn-submit:hover {
+          color: #fff;
           background: $color-dark;
         }
       }
     }
+  }
+  .calendar,
+  .calendar-form {
+    z-index: -10;
+    opacity: 0;
+  }
+  .calendar.open,
+  .calendar-form.open {
+    opacity: 1;
+    z-index: 10;
   }
   .buttons {
     width: 100%;
@@ -154,7 +173,6 @@ body {
     align-items: center;
   }
   .btn-appointment {
-    // box-shadow: 0 0px 5px #999;
     position: absolute;
     bottom: 300px;
     font-size: 1.2rem;
