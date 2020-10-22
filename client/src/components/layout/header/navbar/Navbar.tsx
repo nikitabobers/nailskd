@@ -1,22 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { magenta } from "@ant-design/colors";
-
-import { Layout, Menu } from "antd";
+import "./navbar.scss";
 
 function Navbar() {
 	return (
-		<Menu mode="horizontal" defaultSelectedKeys={["2"]}>
-			<Menu.Item key="">
-				<Link to="/">Home</Link>
-			</Menu.Item>
-			<Menu.Item key="">
-				<Link to="/portfolio">Portfolio</Link>
-			</Menu.Item>
-			<Menu.Item key="">
-				<Link to="/portfolio">Contact</Link>
-			</Menu.Item>
-		</Menu>
+		<nav className="navbar">
+			<Link className="navbar--item" to="/">
+				Home
+			</Link>
+			<Link className="navbar--item" to="/portfolio">
+				Portfolio
+			</Link>
+			<Link className="navbar--item" to="/contact">
+				Contacts
+			</Link>
+		</nav>
 	);
 }
 

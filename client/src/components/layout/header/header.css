@@ -1,4 +1,30 @@
+.navbar--flex {
+    display: flex;
+    justify-content: center;
+}
+
+.ant-menu-item,
+.ant-menu-submenu-title {
+    padding: 1rem;
+}
+
 .header__top {
-	display: flex;
-	justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    margin-top: 0.5rem;
+}
+
+.header__top-social {
+    display: flex;
+    align-self: center;
+}
+
+.header__top-social span {
+    padding: 0 5px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
 }
