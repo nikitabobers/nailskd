@@ -1,0 +1,20 @@
+@import "variables";
+
+.item--container {
+	position: relative;
+	display: block;
+	width: 100%;
+	padding-bottom: 100%;
+	overflow: hidden;
+}
+
+.item--container img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
