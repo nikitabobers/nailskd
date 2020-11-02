@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { PortfolioItem } from "./portfolioItem/PortfolioItem";
 import { Loader } from "../../layout/loader/Loader";
+import { Button } from "../../layout/button/Button";
+import { FiInstagram } from "react-icons/fi";
+
 import "./_portfolio.scss";
 
 function Portfolio() {
@@ -34,6 +37,12 @@ function Portfolio() {
 						/>
 					))}
 			</div>
+			<Button style="btn--primary">
+				<a href="https://www.instagram.com/nailskd/" target="_blank">
+					View more
+					<FiInstagram />
+				</a>
+			</Button>
 		</section>
 	);
 }

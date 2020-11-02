@@ -1,0 +1,44 @@
+@import "variables";
+
+.btn {
+	border: none;
+	background: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.1rem;
+	font-weight: 600;
+	border-radius: 10px;
+	padding: 0.8rem 2rem;
+	margin: 2rem auto;
+}
+
+// Center all child elements
+.btn > * {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 600;
+}
+
+.btn--primary,
+.btn--primary > * {
+	background: $color-primary;
+	color: $color-white;
+}
+
+// React-icons on primary button
+.btn--primary svg {
+	stroke: $color-white;
+	stroke-width: 3;
+}
+
+.btn--primary svg {
+	margin-left: 0.5rem;
+}
+
+@media (min-width: 1000px) {
+	.btn {
+		margin: 3rem auto;
+	}
+}
