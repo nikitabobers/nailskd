@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { PortfolioItem } from "./portfolioItem/PortfolioItem";
-import { Loader } from "../../layout/loader/Loader";
+import PortfolioList from "./portfolioList/PortfolioList";
 import { Button } from "../../layout/button/Button";
 import { FiInstagram } from "react-icons/fi";
-
 import "./_portfolio.scss";
 
 function Portfolio() {
@@ -22,23 +20,16 @@ function Portfolio() {
 		getData();
 	}, []);
 
-	return data.length === 0 ? (
-		<Loader />
-	) : (
+	return (
 		<section className="portfolio--section">
-			<div className="item--list">
-				{data.length > 0 &&
-					data.map((item) => (
-						<PortfolioItem
-							key={item.node.id}
-							name={item.node.id}
-							image={item.node.display_url}
-							link="link"
-						/>
-					))}
-			</div>
-			<Button style="btn--primary">
-				<a href="https://www.instagram.com/nailskd/" target="_blank">
+			<PortfolioList list={data} />
+			<Button btnStyle="btn--primary">
+				<a
+					href="https://www.instagram.com/nailskd/"
+					rel="noopener noreferrer"
+					target="_blank"
+					className="btn btn--primary"
+				>
 					View more
 					<FiInstagram />
 				</a>

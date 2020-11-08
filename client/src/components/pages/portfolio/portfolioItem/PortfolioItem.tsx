@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./_portfolioItem.scss";
 
 interface ItemProp {
@@ -8,14 +8,8 @@ interface ItemProp {
 }
 
 const PortfolioItem: React.FC<ItemProp> = ({ name, image, link }) => {
-	const [style, setStyle] = useState({});
-
-	useEffect(() => {
-		setStyle({ backgroundImage: `url(${image})` });
-	}, []);
-
 	return (
-		<div className="item--container">
+		<div className="portfolio--item">
 			<img src={image} alt="key" />
 		</div>
 	);

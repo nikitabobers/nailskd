@@ -3,22 +3,28 @@
 	padding-top: 100px;
 }
 
-.item--list {
+.portfolio--list {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 3px;
 	margin-bottom: 2rem;
 }
 
+.portfolio--list svg {
+	width: 100%;
+	// height: 20rem;
+	padding-bottom: 50%;
+}
+
 @media (min-width: 736px) {
-	.item--list {
+	.portfolio--list {
 		grid-template-columns: repeat(3, 1fr);
 		grid-gap: 15px;
 		padding: 2rem 1rem;
 	}
 }
 @media (min-width: 1000px) {
-	.item--list {
+	.portfolio--list {
 		grid-template-columns: repeat(3, 1fr);
 		grid-gap: 30px;
 		padding: 1rem 7rem;
