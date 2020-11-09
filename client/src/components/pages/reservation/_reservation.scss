@@ -1,0 +1,11 @@
+.reservation {
+	height: 100vh;
+}
+.rdtPicker td.rdtToday {
+	// background-color: red;
+	font-weight: 600;
+}
+
+.rdtPicker td.rdtToday:before {
+	display: none;
+}
