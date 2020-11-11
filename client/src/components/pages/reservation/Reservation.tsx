@@ -3,35 +3,50 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./_reservation.scss";
 
-const data = {};
+import data from "../../../data.json";
+import { Form } from "../../layout/form/Form";
+
+interface IAddDays {
+	date: Date;
+	days: number;
+}
+
+const addDays = (days: number, month: number) => {
+	let result = new Date();
+
+	result.setMonth(month);
+
+	result.setDate(days);
+
+	return result;
+};
 
 const Reservation = () => {
-	const inputProps = {
-		placeholder: "Date",
-	};
+	const [selectedDate, setSelectedDate] = useState<any>(null);
 
-	const [startDate, setStartDate] = useState<any>(null);
-
-	useEffect(() => {
-		if (startDate != null) {
-			console.log(startDate.getDay());
-			console.log(new Date());
-		}
-	}, [startDate]);
+	useEffect(() => {}, [selectedDate]);
 
 	return (
 		<section className="reservation">
-			<DatePicker
-				dateFormat="dd/MM/yyy"
-				selected={startDate}
-				onChange={(date) => setStartDate(date)}
-				minDate={new Date()}
-				isClearable
-				// maxDate
-				// filterDate
-				// showTimeSelect
-				// excludeTimes
-			/>
+			<Form>
+				<label>
+					Pick date
+					<DatePicker
+						dateFormat="dd/MM/yyy"
+						selected={selectedDate}
+						onChange={(date) => setSelectedDate(date)}
+						minDate={new Date()}
+						isClearable
+						includeDates={data.map((date: any) =>
+							addDays(date.date, date.month)
+						)}
+					/>
+				</label>
+				<label>
+					Pick time
+					<input type="checkbox" />
+				</label>
+			</Form>
 		</section>
 	);
 };
