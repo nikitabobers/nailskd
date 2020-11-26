@@ -5,7 +5,6 @@
 	justify-content: space-around;
 	width: 40%;
 	margin: auto;
-	margin-top: 1rem;
 }
 
 .navbar--item {
@@ -19,7 +18,8 @@
 }
 
 .navbar a:hover {
-	color: $color-grey;
+	color: $color-primary;
+	transform: scale(1.05);
 }
 
 .navbar a:after {
@@ -41,8 +41,8 @@
 	transition: all 0.5s;
 }
 
-.navbar a:hover:after {
-	opacity: 1;
-	visibility: visible;
-	height: 100%;
-}
+// .navbar a:hover:after {
+// 	opacity: 1;
+// 	visibility: visible;
+// 	height: 100%;
+// }

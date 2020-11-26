@@ -4,7 +4,9 @@
 	position: absolute;
 	left: 0;
 	right: 0;
-	height: 100px;
+	min-height: 70px;
+	display: flex;
+	align-items: center;
 }
 .navbar--flex {
 	display: flex;
