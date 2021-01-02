@@ -1,0 +1,15 @@
+@import "variables";
+
+.section__reservation--confirm {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 80vh;
+
+	h2 {
+		margin: auto;
+		text-align: center;
+		margin: 2rem 0;
+	}
+}
