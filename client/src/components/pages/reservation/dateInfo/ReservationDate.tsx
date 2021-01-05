@@ -1,14 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import DatePicker from "react-datepicker";
 import { Form } from "../../../layout/form/Form";
 import { TimeBlock } from "./timeBlock/TimeBlock";
 import { UserContext } from "../../../context/user/UserProvider";
+import { Button } from "../../../layout/button/Button";
+
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import "./_reservation.scss";
+import "./_reservationDate.scss";
 
 import data from "../../../../data.json";
-import { Button } from "../../../layout/button/Button";
 
 interface IAddDays {
 	date: number;
@@ -24,30 +25,43 @@ const addDays = (date: IAddDays) => {
 	return result;
 };
 
-const showButtonNext = () => {
-	return (
-		<div className="section__button">
-			<Button btnStyle="btn--grey btn--medium">Clear</Button>
-			<Link to="/reservation/user" className="btn btn--primary btn--medium">
-				Next
-			</Link>
-		</div>
-	);
+const getInitialDate = (dataValue: any) => {
+	const dateFromData = new Date(2021, dataValue.month, dataValue.date);
+	const dateFromLS = localStorage.getItem("date");
+	const p = new Date(dateFromLS!);
+	if (dateFromLS) return p;
+	else return dateFromData;
+};
+
+const showButtons = (date: Date, time: string) => {
+	if (date && time) {
+		return (
+			<div className="section__button">
+				<Button btnStyle="btn btn--grey">Clear</Button>
+				<Link to="/reservation/user" className="btn btn--primary">
+					Next
+				</Link>
+			</div>
+		);
+	}
 };
 
 const ReservationDate: React.FC = () => {
+	const { time, date, setDate, setTime } = useContext(UserContext);
+
+	const firstDayFromData = data[0];
 	// Date from data.json
-	const [dateData, setDateData] = useState<any>(null);
+	const [dateData, setDateData] = useState<any>(
+		getInitialDate(firstDayFromData)
+	);
 	// Time from data.json
 	const [timeData, setTimeData] = useState<any>([]);
-
-	const { time, date, setDate, setTime } = useContext(UserContext);
 
 	// Get times for TimeBlock components
 	useEffect(() => {
 		if (dateData != null) {
-			const f = dateData.getDate();
-			const result = data.find((x) => x.date === f);
+			const day = dateData.getDate();
+			const result = data.find((x) => x.date === day);
 
 			if (result) {
 				setTimeData(result.times.map((x: any) => x));
@@ -58,21 +72,8 @@ const ReservationDate: React.FC = () => {
 	const setUserDate = () => setDate(dateData);
 	useEffect(setUserDate, [dateData]);
 
-	const showButtonNext = () => {
-		if (date && time) {
-			return (
-				<div className="section__button">
-					<Button btnStyle="btn--grey btn--medium">Clear</Button>
-					<Link to="/reservation/user" className="btn btn--primary btn--medium">
-						Next
-					</Link>
-				</div>
-			);
-		}
-	};
-
 	return (
-		<section className="section__reservation">
+		<section className="section__reservation--date">
 			<Form>
 				<div className="section__calendar">
 					<DatePicker
@@ -95,22 +96,10 @@ const ReservationDate: React.FC = () => {
 						/>
 					))}
 				</div>
+				{showButtons(date, time)}
 			</Form>
-
-			{showButtonNext()}
 		</section>
 	);
 };
 
 export { ReservationDate };
-{
-}
-
-// const showButton = () => {
-// 	if (date && time)
-// 		return (
-// 			<Link to="/reservation/user" className="btn btn--primary">
-// 				Make appointment
-// 			</Link>
-// 		);
-// };
