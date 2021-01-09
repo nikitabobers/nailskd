@@ -1,21 +1,10 @@
-.section__reservation--user {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-direction: column;
-	margin: auto;
-	overflow: visible;
-	height: 90vh;
-	padding: 0;
-}
-
-.section__reservation--user h2 {
-	margin-bottom: 2rem;
+.reservation--user h2 {
+  margin-bottom: 2rem;
 }
 
 .section__button {
-	display: flex;
-	justify-content: space-around;
-	width: 250px;
-	margin: auto;
+  display: flex;
+  justify-content: space-around;
+  width: 250px;
+  margin: auto;
 }

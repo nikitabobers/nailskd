@@ -1,41 +1,43 @@
 @import "node_modules/react-datepicker/src/stylesheets/datepicker.scss";
-
 @import "variables";
-.section__reservation--date {
-	// display: flex;
-	// justify-content: center;
-	// align-items: center;
-	// flex-direction: column;
-	height: 80vh;
-	margin-top: 2rem;
+
+.reservation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 80vh;
 }
 
-.section__calendar {
-	margin: auto;
-}
+.reservation--date {
+  .calendar {
+    margin: auto;
+  }
 
-.section__personal {
-	margin-top: 1rem;
-}
-.rdtPicker td.rdtToday {
-	font-weight: 600;
-}
+  .personal {
+    margin-top: 1rem;
+  }
 
-.rdtPicker td.rdtToday:before {
-	display: none;
-}
-
-.section__time {
-	margin: auto;
-	margin-top: 2rem;
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-gap: 1.5rem;
+  .time-list {
+    margin: auto;
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5rem;
+  }
 }
 
 .react-datepicker {
-	border: none;
-	font-size: 1rem;
+  border: none;
+  font-size: 1rem;
+}
+
+.rdtPicker td.rdtToday {
+  font-weight: 600;
+}
+
+.rdtPicker td.rdtToday:before {
+  display: none;
 }
 
 // Override @react-datepicker styles
@@ -67,17 +69,17 @@
 .react-datepicker__year-text--selected,
 .react-datepicker__year-text--in-selecting-range,
 .react-datepicker__year-text--in-range {
-	font-weight: 600;
+  font-weight: 600;
 }
 
 .react-datepicker__header {
-	background: none;
+  background: none;
 }
 
 .react-datepicker__day--keyboard-selected {
-	background-color: #fff;
-	color: #000;
-	font-weight: 400;
+  background-color: #fff;
+  color: #000;
+  font-weight: 400;
 }
 
 .react-datepicker__month-text--keyboard-selected,
@@ -98,17 +100,17 @@
 .react-datepicker__month-text--keyboard-selected:hover,
 .react-datepicker__quarter-text--keyboard-selected:hover,
 .react-datepicker__year-text--keyboard-selected:hover {
-	background-color: $color-primary;
+  background-color: $color-primary;
 }
 
 .react-datepicker {
-	font-size: 1rem;
-	margin: auto;
+  font-size: 1rem;
+  margin: auto;
 }
 .react-datepicker__day {
-	width: 2.1rem;
+  width: 2.1rem;
 }
 
 .react-datepicker__header {
-	border: none;
+  border: none;
 }
