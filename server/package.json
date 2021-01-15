@@ -1,0 +1,17 @@
+{
+  "name": "nailskd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Nikita Bobers",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.4.0",
+    "nodemon": "^2.0.7",
+    "pg": "^8.5.1"
+  }
+}
