@@ -1,11 +1,5 @@
 const graphql = require("graphql");
-const {
-  GraphQLObjectType,
-  GraphQLID,
-  GraphQLString,
-  GraphQLList,
-  GraphQLSchema,
-} = graphql;
+const { GraphQLObjectType, GraphQLID, GraphQLList, GraphQLSchema } = graphql;
 
 const { Client } = require("pg");
 const { UserType } = require("./user");
