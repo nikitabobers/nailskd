@@ -1,16 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 const { graphqlHTTP } = require("express-graphql");
-const schema = require("./schema/schema");
+const schema = require("./schema/root.js");
 const app = express();
 
 const PORT = process.env.PORT || 5000;
-
-// The root provides a resolver function for each API endpoint
-const root = {
-  hello: () => {
-    return "Hello world!";
-  },
-};
 
 app.use(
   "/graphql",
