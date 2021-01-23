@@ -6,30 +6,53 @@ import { Portfolio } from "./pages/portfolio/Portfolio";
 import { Contact } from "./pages/contact/Contact";
 import { ReservationDate } from "./pages/reservation/dateInfo/ReservationDate";
 import { ReservationUser } from "./pages/reservation/userInfo/ReservationUser";
-import AppState from "./context/AppState";
 import { ReservationConfirm } from "./pages/reservation/confirm/ReservationConfirm";
+import { ReservationConfirmed } from "./pages/reservation/confirmed/ReservationConfirmed";
+import AppState from "./context/AppState";
+
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: "http://localhost:5000/graphql?",
+  cache: new InMemoryCache(),
+});
 
 function App() {
   return (
-    <AppState>
-      <Router>
-        <div className="container">
+    <ApolloProvider client={client}>
+      <AppState>
+        <Router>
           <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/portfolio" component={Portfolio} />
-            <Route exact path="/contact" component={Contact} />
-            <Route exact path="/reservation/date" component={ReservationDate} />
-            <Route exact path="/reservation/user" component={ReservationUser} />
-            <Route
-              exact
-              path="/reservation/confirm"
-              component={ReservationConfirm}
-            />
-          </Switch>
-        </div>
-      </Router>
-    </AppState>
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/portfolio" component={Portfolio} />
+              <Route exact path="/contact" component={Contact} />
+              <Route
+                exact
+                path="/reservation/date"
+                component={ReservationDate}
+              />
+              <Route
+                exact
+                path="/reservation/user"
+                component={ReservationUser}
+              />
+              <Route
+                exact
+                path="/reservation/confirm"
+                component={ReservationConfirm}
+              />
+              <Route
+                exact
+                path="/reservation/confirmed"
+                component={ReservationConfirmed}
+              />
+            </Switch>
+          </div>
+        </Router>
+      </AppState>
+    </ApolloProvider>
   );
 }
 
