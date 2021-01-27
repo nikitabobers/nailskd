@@ -9,28 +9,20 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./_reservationDate.scss";
 
-import data from "../../../../data.json";
+import { useQuery, gql } from "@apollo/client";
 
-interface IAddDays {
-  date: number;
-  month: number;
-}
+const GET_DATES = gql`
+  query GetDates {
+    dates {
+      date
+      time
+    }
+  }
+`;
 
-const addDays = (date: IAddDays) => {
-  let result = new Date();
-
-  result.setMonth(date.month);
-  result.setDate(date.date);
-
+const addDays = (date: any) => {
+  let result = new Date(date.date);
   return result;
-};
-
-const getInitialDate = (dataValue: any) => {
-  const dateFromData = new Date(2021, dataValue.month, dataValue.date);
-  const dateFromLS = localStorage.getItem("date");
-  const p = new Date(dateFromLS!);
-  if (dateFromLS) return p;
-  else return dateFromData;
 };
 
 const showButtons = (date: Date, time: string) => {
@@ -48,29 +40,56 @@ const showButtons = (date: Date, time: string) => {
 
 const ReservationDate: React.FC = () => {
   const { time, date, setDate, setTime } = useContext(UserContext);
+  const { loading, error, data } = useQuery(GET_DATES);
 
-  const firstDayFromData = data[0];
   // Date from data.json
-  const [dateData, setDateData] = useState<any>(
-    getInitialDate(firstDayFromData)
-  );
+  const [dateData, setDateData] = useState<any>(null);
   // Time from data.json
   const [timeData, setTimeData] = useState<any>([]);
+
+  // Set inital date in DatePicker
+  useEffect(() => {
+    if (data) {
+      const valueLS = localStorage.getItem("date");
+      const dateLS = new Date(valueLS!);
+
+      let initialDate;
+
+      if (valueLS) {
+        initialDate = dateLS;
+      } else {
+        initialDate = new Date(data.dates[0].date);
+      }
+
+      setDateData(initialDate);
+    }
+  }, [data]);
 
   // Get times for TimeBlock components
   useEffect(() => {
     if (dateData != null) {
-      const day = dateData.getDate();
-      const result = data.find((x) => x.date === day);
+      const dayDate = dateData.getDate();
 
-      if (result) {
-        setTimeData(result.times.map((x: any) => x));
+      // Find selected date in DB
+      const dateDB = data.dates.find(
+        (day: any) => new Date(day.date).getDate() === dayDate
+      );
+
+      const timeValues = dateDB.time;
+
+      if (dateDB) {
+        setTimeData(timeValues.map((x: any) => x));
       }
     }
   }, [dateData]);
 
-  const setUserDate = () => setDate(dateData);
-  useEffect(setUserDate, [dateData]);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  const handleOnChange = (date: Date | [Date, Date] | null) => {
+    setDateData(date);
+    setDate(date);
+  };
 
   return (
     <section className="reservation reservation--date">
@@ -79,10 +98,10 @@ const ReservationDate: React.FC = () => {
           <DatePicker
             dateFormat="dd/MM/yyy"
             selected={dateData}
-            onChange={(date) => setDateData(date)}
+            onChange={(date) => handleOnChange(date)}
             minDate={new Date()}
             isClearable
-            includeDates={data.map((date: any) => addDays(date))}
+            includeDates={data.dates.map((date: any) => addDays(date))}
             inline
           />
         </div>
