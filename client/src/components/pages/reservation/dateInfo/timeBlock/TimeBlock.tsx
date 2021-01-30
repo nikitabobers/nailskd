@@ -2,31 +2,35 @@ import React from "react";
 import "./_timeBlock.scss";
 
 interface ITimeBlock {
-	labelName: string;
-	id: number;
-	handleChange: Function;
+  labelName: string;
+  id: number;
+  handleChange: Function;
 }
 
-const checkValue = (x: any) => {
-	const valueLS = localStorage.getItem("time");
-	if (valueLS === x) return true;
-	return false;
+const checkValue = (value: string) => {
+  const valueLS = localStorage.getItem("time");
+  if (valueLS === value) return true;
+  return false;
+};
+
+const removeSeconds = (timeValue: string) => {
+  return timeValue.slice(0, -3);
 };
 
 const TimeBlock = ({ labelName, id, handleChange }: ITimeBlock) => {
-	return (
-		<div className="time__block">
-			<input
-				type="radio"
-				value={labelName}
-				name="radio"
-				id={id.toString()}
-				onChange={(e) => handleChange(e.target.value)}
-				defaultChecked={checkValue(labelName)}
-			/>
-			<label htmlFor={id.toString()}>{labelName}</label>
-		</div>
-	);
+  return (
+    <div className="time__block">
+      <input
+        type="radio"
+        value={removeSeconds(labelName)}
+        name="radio"
+        id={id.toString()}
+        onChange={(e) => handleChange(e.target.value)}
+        defaultChecked={checkValue(removeSeconds(labelName))}
+      />
+      <label htmlFor={id.toString()}>{removeSeconds(labelName)}</label>
+    </div>
+  );
 };
 
 export { TimeBlock };
