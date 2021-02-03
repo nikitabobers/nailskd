@@ -8,6 +8,7 @@ import { ReservationDate } from "./pages/reservation/dateInfo/ReservationDate";
 import { ReservationUser } from "./pages/reservation/userInfo/ReservationUser";
 import { ReservationConfirm } from "./pages/reservation/confirm/ReservationConfirm";
 import { ReservationConfirmed } from "./pages/reservation/confirmed/ReservationConfirmed";
+import { ValidationProvider } from "./layout/form/validation/Validation";
 import AppState from "./context/AppState";
 
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
@@ -33,11 +34,11 @@ function App() {
                 path="/reservation/date"
                 component={ReservationDate}
               />
-              <Route
-                exact
-                path="/reservation/user"
-                component={ReservationUser}
-              />
+              <Route exact path="/reservation/user">
+                <ValidationProvider>
+                  <ReservationUser />
+                </ValidationProvider>
+              </Route>
               <Route
                 exact
                 path="/reservation/confirm"
