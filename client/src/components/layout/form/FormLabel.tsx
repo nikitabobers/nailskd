@@ -29,6 +29,7 @@ const FormLabel: React.FC<IFormLabel> = ({
         onChange={onChange}
         placeholder={placeholder}
         disabled={disabled}
+        className={errorMessage ? "error" : ""}
       />
       <p className="error--message">{errorMessage}</p>
     </label>

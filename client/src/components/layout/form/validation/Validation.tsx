@@ -3,35 +3,60 @@ import React, { createContext, useState, useEffect } from "react";
 interface IError {
   nameError: string;
   phoneError: string;
-  validate(type: string, value: string): boolean;
-  noError: boolean;
+  validate(type: string, value: any): boolean;
 }
 
 export const ErrorContext = createContext<IError>({} as IError);
 
+const regex = /^[0-9]{7,12}$/;
+
+const setErrorMessage = (f: Function, type: string, msg: string) => {
+  return f((prev: any) => ({
+    ...prev,
+    [type + "Error"]: msg,
+  }));
+};
+
+const clearErrorMessage = (f: Function, type: string) => {
+  return f((prev: any) => ({
+    ...prev,
+    [type + "Error"]: "",
+  }));
+};
+
 const ValidationProvider: React.FC = (props) => {
   const [errorState, setErrorState] = useState<IError>({} as IError);
-  const [noError, setNoError] = useState(false);
 
-  const validate = (type: string, value: string) => {
-    if (value === "" || value === undefined) {
-      return false;
-    } else {
-      switch (type) {
-        case "name":
-          if (value.length < 3) {
-            setErrorState((prev) => ({
-              ...prev,
-              [type + "Error"]: "Minimum 2 characters",
-            }));
-            return false;
-          }
-          break;
-        default:
-          break;
-      }
+  const validate = (type: string, value: any) => {
+    switch (type) {
+      case "name":
+        if (value === undefined || value.length < 3) {
+          setErrorMessage(
+            setErrorState,
+            type,
+            "Please eneter minimum 3 characters"
+          );
+          return false;
+        } else {
+          clearErrorMessage(setErrorState, type);
+          return true;
+        }
+      case "phone":
+        if (regex.test(value)) {
+          clearErrorMessage(setErrorState, type);
+          return true;
+        } else {
+          setErrorMessage(
+            setErrorState,
+            type,
+            "Please enter valid phone number"
+          );
+          return false;
+        }
+      default:
+        break;
     }
-    return true;
+    return false;
   };
 
   return (
@@ -40,7 +65,6 @@ const ValidationProvider: React.FC = (props) => {
         nameError: errorState.nameError,
         phoneError: errorState.phoneError,
         validate,
-        noError,
       }}
     >
       {props.children}

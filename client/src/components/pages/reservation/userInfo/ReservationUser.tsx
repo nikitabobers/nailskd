@@ -7,19 +7,18 @@ import { ErrorContext } from "../../../layout/form/validation/Validation";
 import { Button } from "../../../layout/button/Button";
 import "./_reservationUser.scss";
 
-const kek = () => {
-  return true;
-};
-
 const ReservationUser: React.FC = () => {
   const { name, phone, setName, setPhone } = useContext(UserContext);
-  const { nameError, phoneError, validate, noError } = useContext(ErrorContext);
+  const { nameError, phoneError, validate } = useContext(ErrorContext);
   let history = useHistory();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    if (validate("name", name)) {
+    validate("name", name);
+    validate("phone", phone);
+
+    if (validate("name", name) && validate("phone", phone)) {
       history.push("/reservation/confirm");
     }
   };
