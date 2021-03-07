@@ -1,7 +1,7 @@
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLList } = graphql;
 
-const DateType = new GraphQLObjectType({
+export const DateType = new GraphQLObjectType({
   name: "date",
   fields: () => ({
     date_id: { type: GraphQLID },
@@ -9,7 +9,3 @@ const DateType = new GraphQLObjectType({
     time: { type: new GraphQLList(GraphQLString) },
   }),
 });
-
-module.exports = {
-  DateType,
-};
