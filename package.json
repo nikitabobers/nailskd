@@ -1,0 +1,11 @@
+{
+  "name": "contactPageKristine",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd server && yarn dev\" \"cd client && yarn start\""
+  },
+  "repository": "git@github.com:nikitabobers/contactPageKristine.git",
+  "author": "nikita <nikita.bobers@gmail.com>",
+  "license": "MIT"
+}
